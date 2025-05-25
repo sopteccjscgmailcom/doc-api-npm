@@ -1,0 +1,183 @@
+---
+sidebar_position: 30
+---
+
+# Curso Avanzado de Git  
+*Domina flujos profesionales, resolución de conflictos y optimización de repositorios*  
+
+---
+
+## **🔥 1. Flujos de Trabajo Avanzados**  
+
+### **🔹 Git Flow (Flujo Estándar)**  
+Estructura de ramas para proyectos grandes:  
+- **`main`/`master`** → Versiones estables (production).  
+- **`develop`** → Integración de features.  
+- **`feature/***` → Desarrollo de nuevas funcionalidades.  
+- **`release/***` → Preparación para producción.  
+- **`hotfix/***` → Correcciones urgentes.  
+
+**Comandos clave:**  
+```bash
+git flow init  # Requiere extensión `git-flow`
+git flow feature start mi-feature
+git flow feature finish mi-feature
+```
+
+### **🔹 GitHub Flow (Continuous Deployment)**  
+- **Una sola rama principal (`main`)**.  
+- **Cada feature en una rama nueva** → PR → Merge.  
+- Ideal para CI/CD.  
+
+---
+
+## **⚡ 2. Reescribir Historial (Rebase y Amend)**  
+
+### **🔹 `git commit --amend`**  
+Modifica el último commit (mensaje o archivos):  
+```bash
+git add archivo-olvidado.txt
+git commit --amend -m "Nuevo mensaje"
+```
+
+### **🔹 `git rebase` (Reorganizar commits)**  
+- **Reordenar, combinar o editar commits**:  
+  ```bash
+  git rebase -i HEAD~3  # Interactivo (últimos 3 commits)
+  ```
+- **Traer cambios de otra rama sin merge**:  
+  ```bash
+  git rebase main  # Desde la rama feature
+  ```
+- **¡Cuidado!** No usar en ramas compartidas.  
+
+### **🔹 `git cherry-pick`**  
+Copia un commit específico a otra rama:  
+```bash
+git cherry-pick abc1234  # Hash del commit
+```
+
+---
+
+## **🛠 3. Depuración y Búsqueda**  
+
+### **🔹 `git bisect` (Búsqueda Binaria)**  
+Encuentra el commit que introdujo un bug:  
+```bash
+git bisect start
+git bisect bad          # Commit actual tiene el bug
+git bisect good abc123  # Último commit estable
+# Git navega automáticamente → prueba y marca good/bad
+git bisect reset        # Finaliza
+```
+
+### **🔹 `git blame`**  
+Muestra quién modificó cada línea:  
+```bash
+git blame archivo.txt
+```
+
+### **🔹 `git grep`**  
+Busca texto en el repositorio:  
+```bash
+git grep "palabra-clave"
+```
+
+---
+
+## **🚨 4. Resolución Avanzada de Conflictos**  
+
+### **🔹 `git rerere` (Reuse Recorded Resolution)**  
+Guarda resoluciones de conflictos para reutilizar:  
+```bash
+git config --global rerere.enabled true
+```
+- Útil en rebases/merges recurrentes.  
+
+### **🔹 Conflictos complejos en merge/rebase**  
+1. **Editar manualmente** archivos con `<<<<<<<`, `=======`, `>>>>>>>`.  
+2. Usar herramientas visuales (`vscode`, `meld`, `kdiff3`):  
+   ```bash
+   git mergetool
+   ```
+
+---
+
+## **📦 5. Optimización y Mantenimiento**  
+
+### **🔹 `git gc` (Garbage Collection)**  
+Limpia archivos innecesarios y optimiza el repo:  
+```bash
+git gc --auto
+```
+
+### **🔹 `git fsck`**  
+Verifica la integridad del repositorio:  
+```bash
+git fsck --full
+```
+
+### **🔹 Submódulos (`git submodule`)**  
+Incrusta repos dentro de otros:  
+```bash
+git submodule add https://github.com/usuario/repo.git
+git submodule update --init --recursive
+```
+
+---
+
+## **🌐 6. Trabajo Avanzado con Remotos**  
+
+### **🔹 Rebase Público (`--force-with-lease`)**  
+Actualiza ramas remotas después de reescribir historia:  
+```bash
+git push origin main --force-with-lease  # Más seguro que --force
+```
+
+### **🔹 Reflog: El "Salvavidas" de Git**  
+Recupera commits perdidos:  
+```bash
+git reflog  # Muestra todas las acciones recientes
+git checkout abc1234  # Restaura un commit borrado
+```
+
+### **🔹 Hooks (`pre-commit`, `pre-push`)**  
+Ejecuta scripts automáticos (ej.: tests, linting):  
+```bash
+# Edita .git/hooks/pre-commit (ejemplo en Bash/Python)
+chmod +x .git/hooks/pre-commit
+```
+
+---
+
+## **💡 7. Comandos de Productividad**  
+
+### **🔹 Alias Avanzados**  
+```bash
+git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
+```
+→ `git lg` muestra un historial gráfico bonito.  
+
+### **🔹 `git stash` Avanzado**  
+Guarda cambios temporales sin commit:  
+```bash
+git stash push -m "Mensaje descriptivo"
+git stash list
+git stash apply stash@{1}
+```
+
+---
+
+## **📚 Recursos Avanzados**  
+- **Pro Git (Libro Gratis)**: [git-scm.com/book](https://git-scm.com/book/es/v2)  
+- **Git Internals**: [GitHub Docs](https://github.com/git/git)  
+- **Visualizing Git**: [GitSchool](https://git-school.github.io/visualizing-git/)  
+
+---
+
+### **🚀 Desafío Avanzado**  
+1. Usa `rebase -i` para combinar 3 commits en uno.  
+2. Recupera un commit borrado con `reflog`.  
+3. Configura un hook `pre-commit` que ejecute `eslint`.  
+
+**¡Domina estos conceptos y serás un Jedi de Git!** ⚔️

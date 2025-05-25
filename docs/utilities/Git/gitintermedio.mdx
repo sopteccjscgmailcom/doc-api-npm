@@ -1,0 +1,157 @@
+---
+sidebar_position: 20
+---
+
+# Curso Intermedio de Git  
+*Mejora tu flujo de trabajo, domina ramas y resuelve conflictos como un profesional*  
+
+---
+
+## 📌 1. Gestión Avanzada de Ramas  
+
+### **🔹 Renombrar ramas**  
+```bash
+git branch -m nombre-antiguo nombre-nuevo  # Local
+git push origin :nombre-antiguo nombre-nuevo  # Remoto
+```
+
+### **🔹 Sincronizar ramas locales con remoto**  
+```bash
+git fetch --prune  # Elimina ramas locales que ya no existen en remoto
+```
+
+### **🔹 Comparar ramas (`diff`)**  
+```bash
+git diff rama1..rama2  # Cambios entre ramas
+git diff HEAD~3..HEAD  # Últimos 3 commits
+```
+
+### **🔹 Trabajar con ramas remotas**  
+```bash
+git checkout -b feature-x origin/feature-x  # Crear rama local desde remoto
+git push -u origin feature-x  # Publicar rama local en remoto
+```
+
+---
+
+## **🔄 2. Manejo de Cambios y Historial**  
+
+### **🔹 Deshacer cambios antes del commit**  
+```bash
+git restore archivo.txt  # Descarta cambios en un archivo (Git >= 2.23)
+git checkout -- archivo.txt  # Alternativa (Git < 2.23)
+```
+
+### **🔹 Modificar el último commit**  
+```bash
+git add archivo-olvidado.txt
+git commit --amend -m "Nuevo mensaje"  # ¡Cuidado en commits ya publicados!
+```
+
+### **🔹 Revertir un commit (sin borrar historial)**  
+```bash
+git revert abc123  # Crea un nuevo commit que deshace los cambios
+```
+
+### **🔹 Mover commits entre ramas (`cherry-pick`)**  
+```bash
+git checkout rama-destino
+git cherry-pick abc123  # Copia un commit específico
+```
+
+---
+
+## **🚨 3. Resolución de Conflictos**  
+
+### **🔹 Tipos de conflictos comunes**  
+1. **Merge conflicts**: Al unir ramas con cambios contradictorios.  
+2. **Rebase conflicts**: Al reordenar commits.  
+
+### **🔹 Pasos para resolver conflictos**  
+1. Identifica archivos en conflicto (`git status`).  
+2. Edita manualmente (busca `<<<<<<<`, `=======`, `>>>>>>>`).  
+3. Marca como resuelto:  
+   ```bash
+   git add archivo-resuelto.txt
+   git commit  # Si es merge
+   git rebase --continue  # Si es rebase
+   ```
+
+### **🔹 Herramientas visuales**  
+```bash
+git mergetool  # Abre meld, kdiff3, vscode, etc.
+```
+
+---
+
+## **📦 4. Trabajo Eficiente con Repos Remotos**  
+
+### **🔹 Traer cambios sin merge (`git pull --rebase`)**  
+```bash
+git pull --rebase origin main  # Evita commits de merge innecesarios
+```
+
+### **🔹 Publicar una rama local en remoto**  
+```bash
+git push -u origin mi-rama  # -u guarda la relación entre ramas
+```
+
+### **🔹 Eliminar una rama remota**  
+```bash
+git push origin --delete rama-antigua
+```
+
+### **🔹 Ver diferencias con el remoto**  
+```bash
+git fetch origin
+git diff main origin/main  # Compara local vs remoto
+```
+
+---
+
+## **💡 5. Trucos y Productividad**  
+
+### **🔹 Alias útiles**  
+Agrega a `~/.gitconfig`:  
+```ini
+[alias]
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    st = status -s
+    last = log -1 HEAD  # Muestra el último commit
+```
+
+### **🔹 Guardar cambios temporalmente (`stash`)**  
+```bash
+git stash push -m "Mensaje descriptivo"  # Guarda cambios
+git stash list  # Lista stashes
+git stash apply stash@{1}  # Recupera cambios
+```
+
+### **🔹 Buscar en el historial**  
+```bash
+git log -S "palabra"  # Busca cambios que añadieron/eliminaron "palabra"
+git log --grep="fix"  # Busca commits con "fix" en el mensaje
+```
+
+---
+
+## **📚 6. Próximos Pasos**  
+- **Git Avanzado**: `rebase interactivo`, `hooks`, `submódulos`.  
+- **Plataformas**: Flujos en GitHub/GitLab (PRs, CI/CD).  
+- **Libro recomendado**: [Pro Git](https://git-scm.com/book/es/v2) (gratis).  
+
+---
+
+### **✅ Ejercicio Práctico**  
+1. Crea una rama `feature`:  
+   ```bash
+   git checkout -b feature/login
+   ```
+2. Haz cambios y genera un conflicto (ej.: modifica el mismo archivo en `main` y `feature`).  
+3. Resuélvelo con `git merge` o `git rebase`.  
+4. Sube la rama a GitHub/GitLab:  
+   ```bash
+   git push -u origin feature/login
+   ```
+
+**¡Ahora tienes un flujo profesional con Git!** 🚀

@@ -1,0 +1,23 @@
+yangshun:
+  name: Cliver Jimny Sonco Clavedias
+  title: Ingeniero de sistemas
+  url: https://github.com/sopteccjscgmailcom
+  image_url: https://github.com/sopteccjscgmailcom.png
+  page: true
+  socials:
+    x: yangshunz
+    github: yangshun
+
+slorber:
+  name: Sébastien Lorber
+  title: Docusaurus maintainer
+  url: https://sebastienlorber.com
+  image_url: https://github.com/slorber.png
+  page:
+    # customize the url of the author page at /blog/authors/<permalink>
+    permalink: '/all-sebastien-lorber-articles'
+  socials:
+    x: sebastienlorber
+    linkedin: sebastienlorber
+    github: slorber
+    newsletter: https://thisweekinreact.com

@@ -1,0 +1,108 @@
+# ♻️ CJS vs EMS
+Comparación detallada entre **CommonJS (CJS)** y **ECMAScript Modules (ESM)**
+
+---
+
+### 📦 ¿Qué son?
+
+| Característica     | CommonJS (CJS)                         | ECMAScript Modules (ESM)                           |
+| ------------------ | -------------------------------------- | -------------------------------------------------- |
+| 📚 Definición      | Sistema de módulos original de Node.js | Sistema oficial de módulos de JavaScript desde ES6 |
+| 📆 Año de creación | 2009                                   | 2015 (ES6)                                         |
+| 🛠️ Uso principal  | Node.js (servidor)                     | Navegadores y Node.js moderno                      |
+
+---
+
+### 🔄 Sintaxis de Importación y Exportación
+
+| Acción      | CommonJS                                         | ESM                                                 |
+| ----------- | ------------------------------------------------ | --------------------------------------------------- |
+| 📥 Importar | `const fs = require('fs')`                       | `import fs from 'fs'`                               |
+| 📤 Exportar | `module.exports = valor` o `exports.valor = ...` | `export default valor` o `export const valor = ...` |
+
+---
+
+### ⚙️ Carga de Módulos
+
+| Característica  | CommonJS                                                    | ESM                                                |
+| --------------- | ----------------------------------------------------------- | -------------------------------------------------- |
+| ⌛ Tipo de carga | **Sincrónica** – se carga en tiempo de ejecución            | **Asíncrona** – se analiza antes de ejecutar       |
+| 🚀 Performance  | Más rápido en Node.js clásico, pero no óptimo para frontend | Mejor optimizado para navegadores modernos         |
+| 🔁 Caching      | Se cachea después de la primera carga                       | También se cachea, pero tiene reglas más estrictas |
+
+---
+
+### 🔄 Compatibilidad
+
+| Aspecto                                        | CommonJS                                                                             | ESM                                                     |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| 🔄 Compatibilidad mutua                        | ESM puede importar CJS (con limitaciones), pero CJS no puede importar ESM fácilmente | Mejor interoperabilidad futura                          |
+| 🌐 Navegadores                                 | ❌ No compatible nativamente                                                          | ✅ Compatible nativamente (con `<script type="module">`) |
+| 🧩 Herramientas modernas (Vite, Webpack, etc.) | A veces requiere configuración adicional                                             | Preferido y soportado nativamente                       |
+
+---
+
+### 📁 Archivos y Extensiones
+
+| Aspecto         | CommonJS                  | ESM                                                     |
+| --------------- | ------------------------- | ------------------------------------------------------- |
+| 🧾 Extensión    | `.js` por defecto         | `.mjs` o `.js` (con `"type": "module"` en package.json) |
+| 📦 Package.json | No requiere configuración | Requiere `"type": "module"` para usar `.js` como ESM    |
+
+---
+
+### 🔐 Scope
+
+| Tema              | CommonJS                                  | ESM                                                                  |
+| ----------------- | ----------------------------------------- | -------------------------------------------------------------------- |
+| 🔒 Ámbito (scope) | Todos los módulos tienen su propio ámbito | Igual, pero además es más estricto                                   |
+| 📛 Hoisting       | No soporta hoisting de `require`          | Las importaciones se **hoistean** (mueven al inicio automáticamente) |
+
+---
+
+### 🧪 Ejemplo comparativo
+
+**CommonJS (`math.js`)**:
+
+```js
+// math.js
+function sumar(a, b) {
+  return a + b;
+}
+module.exports = { sumar };
+```
+
+```js
+// main.js
+const { sumar } = require('./math');
+console.log(sumar(2, 3));
+```
+
+**ESM (`math.mjs`)**:
+
+```js
+// math.mjs
+export function sumar(a, b) {
+  return a + b;
+}
+```
+
+```js
+// main.mjs
+import { sumar } from './math.mjs';
+console.log(sumar(2, 3));
+```
+
+---
+
+### ✅ ¿Cuál deberías usar?
+
+| Caso                                                                            | Recomendación                          |
+| ------------------------------------------------------------------------------- | -------------------------------------- |
+| 🔧 Proyectos en Node.js antiguo o con librerías viejas                          | CommonJS                               |
+| 🌐 Aplicaciones modernas, especialmente en frontend o con herramientas modernas | **ESM** (preferido a futuro)           |
+| 🧪 Librerías nuevas que apunten a navegadores y Node.js modernos                | **ESM** (es el estándar oficial ahora) |
+
+---
+
+¿Quieres que te muestre cómo convertir un módulo de CommonJS a ESM con un ejemplo real? 😊
