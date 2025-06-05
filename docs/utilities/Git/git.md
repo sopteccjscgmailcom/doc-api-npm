@@ -81,102 +81,106 @@ git status
 
 ### add
 ```bash
+git add *
+git add leeme.txt 
 ```
-    git add *
-    git add leeme.txt       
+         
 
 ### commit
 ```bash
+git commit -m "primer commit" 
 ```
-    git commit -m "primer commit"   
+      
 
 ## 🟡2 Funcionalidades
 
 ### log   
 ```bash
+git log
 ```              
-    git log                         
 muestra commits
 
 ### checkout
 ```bash
+git checkout `<nombredelarchivo>`
 ```
-    git checkout `<nombredelarchivo>`
 restaura los cambios antes de subir al stage
 
 ### reset
 ```bash
+git reset
 ```
-    git reset                       
 deshace cambios agregados al area de stage (git add)
 
 ### diff
 ```bash
+git dif
 ```
-    git diff                        
 ver las difrencias entre nuestros archivos recien editados
 
 ### reflog
 ```bash
+git reflog
 ```
-    git reflog                      
 muestra el historial completo de interacciones en git un log completo
 
 ### tag   
 ```bash
+git tag version_1
 ```              
-    git tag version_1               
 agregamos un nombre a nuestra version de nuestro proyecto
 
 ### switch
 ```bash
+git switch nombreDeLaRama
 ```
-    git switch nombreDeLaRama       
 cambiamos de lugar de trabajo a otra rama
 
 ### merge
-```cmd
+```bash
+git merge otrarama
 ```
-    git merge otrarama              
 combina 2 ramas
 
 ### stash
-```cmd
+```bash
+git stash
 ```
-    git stash                       
 un commit temporal
 
 ## 🟡3 GITHUB
 subida de proyecto
 ### remote    
-```cmd
+```bash
+git remote add origin https://github.com/sopteccjscgmailcom/doc-api-npm.git
 ```             
-    git remote add origin https://github.com/sopteccjscgmailcom/doc-git.git
 nos conectamos al repositorio de github - solo la primera vez
 
 ### push    
-```cmd
+```bash
+git push -u origin main
 ```            
-    git push -u origin main
+    
 subir nuestro proyecto - luego usamos solo push
 
 ### fetch
-```cmd
+```bash
+git fetch
 ```
-    git fetch                       
 descarga el historial de cambios
 
 ### pull
-```cmd
+```bash
+git pull
 ```
-    git pull                        
 combinamos remoto con local
 
 ## 🟡4 Descargar un proyecto
 ### clone
-```cmd
+```bash
+git clone https://github.com/sopteccjscgmailcom/doc-api-npm.git 
 ```
-    git clone https://github.com/sopteccjscgmailcom/doc-git.git     
+        
 copia sincronizada del proyecto
 
 ## 🟣 trabajar con otro proyecto en la pagina de github NO-local
@@ -197,8 +201,7 @@ para estar actualizados con el proyecto original podemos hacer click en `sinc fo
 donde veremos nuestro user y email
 
 ### lo usamos para evitar ficheros que no queremos agregar
-[.gitignore](.gitignore)
-
+.gitignore
 ### comentamos el codigo en visualStudio
 
 `crlt + }`
