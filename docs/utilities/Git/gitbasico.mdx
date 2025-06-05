@@ -80,28 +80,25 @@ git commit -m "Mensaje descriptivo"  # Guarda cambios en el historial
 ```bash
 git log                                     # Muestra commits
 git log --oneline                           # Historial resumido
-git los --graph                             # Muestra el grafo de ramas
-git log --graph -decorate --all --oneline   # Muestra el grafo de ramas con codigo hash resumido
-
 ```
 
 ---
 
 ## **🌿 4. Ramas (Branches)**  
 
-### **Crear y cambiar de rama**  
+### Crear y cambiar de rama
 ```bash
 git branch <nombre>    # Crea una rama
 git checkout <nombre>  # Cambia a la rama
-git switch <nombre>    # Alternativa moderna
+git switch <nombre>    # Alternativa moderna a checkout
 ```
 
-### **Fusionar ramas**  
+### Fusionar ramas
 ```bash
 git merge <rama>  # Fusiona una rama con la actual
 ```
 
-### **Eliminar rama**  
+### Eliminar rama  
 ```bash
 git branch -d <rama>  # Borra rama local
 ```
@@ -110,23 +107,23 @@ git branch -d <rama>  # Borra rama local
 
 ## **🔄 5. Trabajo con Repos Remotos (GitHub, GitLab, etc.)**  
 
-### **Conectar repositorio remoto**  
+### Conectar repositorio remoto 
 ```bash
 git remote add origin <url-repo>  # Ej: https://github.com/usuario/repo.git
 ```
 
-### **Subir cambios (Push)**  
+### Subir cambios (Push)
 ```bash
 git push -u origin main  # Primera vez
 git push                # Sube cambios después
 ```
 
-### **Bajar cambios (Pull)**  
+### Bajar cambios (Pull) 
 ```bash
 git pull origin main  # Actualiza tu repo local
 ```
 
-### **Clonar un repositorio**  
+### Clonar un repositorio
 ```bash
 git clone <url-repo>
 ```
@@ -135,19 +132,19 @@ git clone <url-repo>
 
 ## **🛠 6. Comandos Útiles Extra**  
 
-### **Deshacer cambios**  
+### Deshacer cambios
 ```bash
 git restore <archivo>  # Descarta cambios en un archivo
 git reset --hard       # Elimina TODOS los cambios locales (¡Cuidado!)
 ```
 
-### **Etiquetas (Tags)**  
+### Etiquetas (Tags) 
 ```bash
 git tag v1.0          # Crea un tag
 git push --tags       # Sube tags al remoto
 ```
 
-### **Alias (Atajos)**  
+### Alias (Atajos)  
 ```bash
 git config --global alias.st "status -s"  # git st → git status -s
 ```
@@ -161,10 +158,8 @@ git config --global alias.st "status -s"  # git st → git status -s
 
 ---
 
-### **✅ ¡Resumen !**  
+## **✅ ¡Resumen !**  
 1. Crea un repositorio local (`git init`).  
 2. Añade un archivo (`git add`).  
 3. Haz un commit (`git commit -m "Primer commit"`).  
-4. Sube a GitHub/GitLab (`git remote add origin ...` + `git push`).  
-
-🚀 **¡Dominar Git te hará un mejor desarrollador!**
+4. Sube a GitHub/GitLab (`git remote add origin ...` + `git push`). 

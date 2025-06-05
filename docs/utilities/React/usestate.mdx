@@ -1,0 +1,147 @@
+# useState()
+🙌 El **hook `useState()`** en React se usa para declarar **variables de estado**, y le puedes pasar varias cosas como **valor inicial**. Veamos con ejemplos qué puedes pasarle y por qué 📦:
+
+---
+
+## ✅ 1. **Valores primitivos**
+
+Los más comunes:
+
+```js
+const [contador, setContador] = useState(0);         // número
+const [nombre, setNombre] = useState("Juan");        // string
+const [activo, setActivo] = useState(true);          // booleano
+```
+
+---
+
+## ✅ 2. **Objetos**
+
+Si quieres manejar múltiples datos relacionados:
+
+```js
+const [usuario, setUsuario] = useState({
+  nombre: "Ana",
+  edad: 25,
+});
+```
+
+👉 Para actualizar una parte del objeto, usa `...` (spread operator):
+
+```js
+setUsuario(prev => ({ ...prev, edad: 26 }));
+```
+
+---
+
+## ✅ 3. **Arreglos**
+
+Muy útil para listas:
+
+```js
+const [tareas, setTareas] = useState(["Estudiar", "Comer"]);
+```
+
+👉 Para agregar una nueva:
+
+```js
+setTareas(prev => [...prev, "Dormir"]);
+```
+
+---
+
+## ✅ 4. **Funciones que retornan el valor inicial**
+
+React ejecutará la función **una sola vez** (al montar el componente), ideal para valores costosos de calcular:
+
+```js
+const [numeroAleatorio, setNumeroAleatorio] = useState(() => {
+  console.log("Generando número..."); // se ejecuta solo una vez
+  return Math.floor(Math.random() * 100);
+});
+```
+
+---
+
+## 🚫 ¿Qué **no** se debe pasar?
+
+* **Valores no serializables** (como funciones o referencias sin control) directamente como estado.
+* Estados derivados de otros sin necesidad (mejor calcularlos al vuelo con `useMemo` o funciones).
+
+---
+
+## 🧠 Resumen con emojis:
+
+| Tipo            | Ejemplo                       | Emoji |
+| --------------- | ----------------------------- | ----- |
+| Número          | `useState(0)`                 | 🔢    |
+| Texto           | `useState("Hola")`            | 💬    |
+| Booleano        | `useState(true)`              | ✅     |
+| Objeto          | `useState({ nombre: "Ana" })` | 🧍    |
+| Arreglo         | `useState([1, 2, 3])`         | 📋    |
+| Función inicial | `useState(() => calcular())`  | ⚙️    |
+
+---
+
+## 💻 Ejemplos interactivos
+
+```jsx live noInline
+function App() {
+  // Número 🔢
+  const [contador, setContador] = useState(0);
+
+  // Texto 💬
+  const [nombre, setNombre] = useState("Juan");
+
+  // Booleano ✅
+  const [activo, setActivo] = useState(true);
+
+  // Objeto 🧍
+  const [usuario, setUsuario] = useState({ nombre: "Ana", edad: 25 });
+
+  // Arreglo 📋
+  const [tareas, setTareas] = useState(["Estudiar", "Comer"]);
+
+  // Función como valor inicial ⚙️
+  const [aleatorio] = useState(() => {
+    console.log("Generando número aleatorio solo 1 vez...");
+    return Math.floor(Math.random() * 100);
+  });
+
+  return (
+    <div style={{ padding: 20 }}>
+      <h2>🔢 useState con número</h2>
+      <p>Contador: {contador}</p>
+      <button onClick={() => setContador(contador + 1)}>Incrementar</button>
+
+      <h2>💬 useState con texto</h2>
+      <p>Nombre: {nombre}</p>
+      <input value={nombre} onChange={e => setNombre(e.target.value)} />
+
+      <h2>✅ useState con booleano</h2>
+      <p>Estado: {activo ? "Activo 🟢" : "Inactivo 🔴"}</p>
+      <button onClick={() => setActivo(!activo)}>Cambiar estado</button>
+
+      <h2>🧍 useState con objeto</h2>
+      <p>{usuario.nombre} tiene {usuario.edad} años</p>
+      <button onClick={() => setUsuario(prev => ({ ...prev, edad: prev.edad + 1 }))}>
+        Cumplir años 🎂
+      </button>
+
+      <h2>📋 useState con arreglo</h2>
+      <ul>
+        {tareas.map((t, i) => <li key={i}>{t}</li>)}
+      </ul>
+      <button onClick={() => setTareas(prev => [...prev, "Nueva tarea"])}>Agregar tarea</button>
+
+      <h2>⚙️ useState con función inicial</h2>
+      <p>Número aleatorio generado: {aleatorio}</p>
+    </div>
+  );
+}
+
+render(
+  <App/>
+);
+
+```

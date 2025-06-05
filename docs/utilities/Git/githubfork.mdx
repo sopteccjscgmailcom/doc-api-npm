@@ -1,0 +1,59 @@
+# Trabajar con otro proyecto de GitHub
+
+## Cómo trabajar con un proyecto de otro usuario en GitHub (usando Fork) 🚀
+
+### 1️⃣ Haz un **Fork** del proyecto original
+
+🔗 Ve al repositorio en GitHub y haz clic en el botón **`Fork`** (arriba a la derecha).
+Esto creará una copia del proyecto original en **tu cuenta personal**.
+
+---
+
+### 2️⃣ Clona tu Fork en tu computadora 💻
+
+Abre una terminal y ejecuta:
+
+```bash
+git clone https://github.com/tu-usuario/nombre-del-repo.git
+```
+
+Esto descargará tu copia del proyecto en local.
+
+---
+
+### 3️⃣ Trabaja en tu copia del proyecto ✍️
+
+Haz los cambios que necesites: edita archivos, agrega funcionalidades, corrige errores, etc.
+
+---
+
+### 4️⃣ Guarda tus cambios con Git 💾
+
+Usa los comandos clásicos para guardar tus cambios:
+
+```bash
+git add .
+git commit -m "Tu mensaje explicando el cambio"
+git push
+```
+
+---
+
+### 5️⃣ Envía tus cambios al proyecto original 🚀
+
+Ve a tu repositorio en GitHub, haz clic en **`Contribute`** y luego en **`Open pull request`**.
+Ahí puedes comparar tu rama con la del proyecto original y proponer tus cambios.
+
+---
+
+### 🔄 Mantén tu Fork actualizado con el original 💡
+
+En GitHub, ve a tu fork y haz clic en **`Sync fork`** (sincronizar fork) para traer los últimos cambios del proyecto original.
+
+También puedes hacerlo desde la terminal si agregas el remoto `upstream`:
+
+```bash
+git remote add upstream https://github.com/usuario-original/repositorio.git
+git fetch upstream
+git merge upstream/main
+```

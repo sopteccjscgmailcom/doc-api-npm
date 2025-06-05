@@ -1,0 +1,142 @@
+# JavaScript (JS) y TypeScript (TS)  
+
+### **1. Declaración de variables**  
+#### JavaScript (JS):  
+```javascript
+let nombre = "Juan";
+let edad = 25;
+let esProgramador = true;
+```  
+#### TypeScript (TS):  
+```typescript
+let nombre: string = "Juan";
+let edad: number = 25;
+let esProgramador: boolean = true;
+```  
+
+---
+
+### **2. Funciones**  
+#### JavaScript (JS):  
+```javascript
+function sumar(a, b) {
+    return a + b;
+}
+```  
+#### TypeScript (TS):  
+```typescript
+function sumar(a: number, b: number): number {
+    return a + b;
+}
+```  
+
+---
+
+### **3. Objetos**  
+#### JavaScript (JS):  
+```javascript
+const persona = {
+    nombre: "Ana",
+    edad: 30,
+};
+```  
+#### TypeScript (TS):  
+```typescript
+const persona: { nombre: string; edad: number } = {
+    nombre: "Ana",
+    edad: 30,
+};
+```  
+*O usando una interfaz:*  
+```tsx
+interface Persona {
+    nombre: string;
+    edad: number;
+}
+const persona: Persona = {
+    nombre: "Ana",
+    edad: 30,
+};
+```  
+
+---
+
+### **4. Arrays**  
+#### JavaScript (JS):  
+```javascript
+const numeros = [1, 2, 3];
+const nombres = ["Ana", "Juan"];
+```  
+#### TypeScript (TS):  
+```typescript
+const numeros: number[] = [1, 2, 3];
+const nombres: string[] = ["Ana", "Juan"];
+```  
+
+---
+
+### **5. Clases**  
+#### JavaScript (JS):  
+```javascript
+class Animal {
+    constructor(nombre) {
+        this.nombre = nombre;
+    }
+}
+```  
+#### TypeScript (TS):  
+```typescript
+class Animal {
+    constructor(public nombre: string) {}
+}
+```  
+
+---
+
+### **6. Tipos personalizados (Unions)**  
+#### JavaScript (JS):  
+*(No existe en JS, solo en TS)*  
+#### TypeScript (TS):  
+```typescript
+type Estado = "activo" | "inactivo";
+let miEstado: Estado = "activo";
+```  
+
+---
+
+### **7. Genéricos**  
+#### JavaScript (JS):  
+*(No existe en JS, solo en TS)*  
+#### TypeScript (TS):  
+```typescript
+function identidad<T>(valor: T): T {
+    return valor;
+}
+const numero = identidad<number>(42);
+```  
+
+---
+
+### **8. Parámetros opcionales**  
+#### JavaScript (JS):  
+```javascript
+function saludar(nombre, apellido) {
+    if (apellido) return `Hola, ${nombre} ${apellido}`;
+    return `Hola, ${nombre}`;
+}
+```  
+#### TypeScript (TS):  
+```typescript
+function saludar(nombre: string, apellido?: string): string {
+    if (apellido) return `Hola, ${nombre} ${apellido}`;
+    return `Hola, ${nombre}`;
+}
+```  
+
+---
+
+### **Resumen**  
+- **JavaScript** es más flexible, sin tipos.  
+- **TypeScript** es igual que JS, pero añadiendo `: tipo` a variables, funciones, etc.  
+
+¿Necesitas más ejemplos o algún caso en específico? 😊

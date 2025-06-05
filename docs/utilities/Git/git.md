@@ -180,12 +180,13 @@ combinamos remoto con local
 copia sincronizada del proyecto
 
 ## 🟣 trabajar con otro proyecto en la pagina de github NO-local
+1. creamos un fork haciendo click en el boton arriba a la derecha `fork`
+2. clonamos nuestro proyecto con el comando `git clone`
+3. trabajamos en nuestro proyecto
+4. hacemos add, commit, push
+5. hacemos un pull request en github haciendo click en el boton `Contribute` y luego `Open pull request`
 
-fork   `<creamos un fork> `       
-clone   `<una vez creado clonamos nuestro repositorio y empezamos a trabajar>`
-Contribute `-> pull request    <una vez haciendo add, commit, en github hacemos el pull>`
-
-sinc fork   `<para que estemos actualizador con el proyecto original>`
+para estar actualizados con el proyecto original podemos hacer click en `sinc fork`
 
 ## 🟣 Tipos Adicionales
 ### abrir nuestra visual estudio code en la ruta donde nos encontramos 

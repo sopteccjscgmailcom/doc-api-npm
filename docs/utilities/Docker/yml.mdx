@@ -1,0 +1,139 @@
+# Docker Compose con 3 contenedores de SQL Server
+
+¡Perfecto! 😎 Vamos a ver cómo tener **varios contenedores de SQL Server** corriendo al mismo tiempo, cada uno escuchando en un **puerto diferente de tu PC** 🔁🧱
+
+---
+
+## 🎯 Objetivo
+
+Correr múltiples instancias de SQL Server en contenedores, por ejemplo:
+
+| Contenedor      | Puerto externo (tu PC) | Puerto interno (Docker) | Contraseña      |
+| --------------- | ---------------------- | ----------------------- | --------------- |
+| `sqlserver2022` | `14333`                | `1433`                  | `Admin#2022`    |
+| `sqlserver2019` | `14334`                | `1433`                  | `Admin#2019`    |
+| `sqlserverdev`  | `14335`                | `1433`                  | `Dev#Password1` |
+
+---
+
+## 📄 `docker-compose.yml` con 3 contenedores SQL Server
+
+```yaml
+version: '3.8'
+
+services:
+  sqlserver2022:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver2022
+    ports:
+      - "14333:1433"
+    environment:
+      SA_PASSWORD: "Admin#2022"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - sql_data_2022:/var/opt/mssql
+    restart: unless-stopped
+
+  sqlserver2019:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver2019
+    ports:
+      - "14334:1433"
+    environment:
+      SA_PASSWORD: "Admin#2019"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - sql_data_2019:/var/opt/mssql
+    restart: unless-stopped
+
+  sqlserverdev:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserverdev
+    ports:
+      - "14335:1433"
+    environment:
+      SA_PASSWORD: "Dev#Password1"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - sql_data_dev:/var/opt/mssql
+    restart: unless-stopped
+
+volumes:
+  sql_data_2022:
+  sql_data_2019:
+  sql_data_dev:
+  
+```
+
+---
+
+## 🧪 ¿Cómo conectarse?
+
+| Desde Azure Data Studio o `sqlcmd` | Usuario | Contraseña      |
+| ---------------------------------- | ------- | --------------- |
+| `localhost,14333`                  | `sa`    | `Admin#2022`    |
+| `localhost,14334`                  | `sa`    | `Admin#2019`    |
+| `localhost,14335`                  | `sa`    | `Dev#Password1` |
+
+---
+
+## ▶️ Cómo levantar todo
+
+Guarda el `docker-compose.yml` en una carpeta y luego:
+
+```bash
+docker-compose up -d
+```
+
+La opción `-d` viene de **"detached"** 🧷, y significa:
+
+> 🧠 **Ejecuta los contenedores en segundo plano** (modo background), **sin bloquear tu terminal**.
+
+---
+
+### 🔁 Comparación:
+
+| Comando                | ¿Bloquea la terminal? | ¿Muestra logs? | ¿Corre contenedores? |
+| ---------------------- | --------------------- | -------------- | -------------------- |
+| `docker-compose up`    | ✅ Sí                  | ✅ Sí           | ✅ Sí                 |
+| `docker-compose up -d` | ❌ No                  | ❌ No           | ✅ Sí                 |
+
+---
+
+### 🧪 Ejemplo:
+
+```bash
+docker-compose up -d
+```
+
+✅ Levanta tus contenedores
+✅ Te devuelve el control de la terminal
+⛔ No ves los logs directamente
+
+---
+
+### 📜 Ver los logs después
+
+Si querés ver los logs aunque lo hayas levantado en modo `-d`, usás:
+
+```bash
+docker-compose logs -f
+```
+
+(`-f` es como "seguir", para ver en tiempo real como si fuera `tail -f`)
+
+---
+
+## 🧹 Cómo parar o borrar
+
+* **Parar** (sin borrar datos):
+
+```bash
+docker-compose down
+```
+
+* **Borrar con volúmenes (borra todo el contenido también):**
+
+```bash
+docker-compose down -v
+```

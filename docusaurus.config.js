@@ -70,7 +70,7 @@ const config = {
       }),
     ],
   ],
-
+  themes: ['@docusaurus/theme-live-codeblock'],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -88,6 +88,12 @@ const config = {
             sidebarId: 'utilSidebar',
             position: 'left',
             label: 'Utilitarios',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'codeSidebar',
+            position: 'left',
+            label: 'Codigos',
           },
           {
             type: 'docSidebar',
@@ -151,7 +157,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
-        additionalLanguages: ['bash'],
+        additionalLanguages: ['bash','java',`php`,`typescript`,`tsx`],
       },
     }),
 };

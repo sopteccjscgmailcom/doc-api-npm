@@ -1,0 +1,112 @@
+# Trabajar local con multiples cuentas de GitHub
+
+Usar múltiples cuentas de GitHub en la misma máquina (por ejemplo, una personal y otra de trabajo) puede lograrse de forma organizada configurando correctamente SSH y Git 🧑‍💻🔐.
+
+---
+
+### 🧱 1: Crear llaves SSH para cada cuenta
+
+Primero, generamos una llave SSH diferente para cada cuenta.
+
+```bash
+# Para la cuenta personal
+ssh-keygen -t ed25519 -C "correo-personal@example.com" -f ~/.ssh/id_ed25519_personal
+
+# Para la cuenta de trabajo
+ssh-keygen -t ed25519 -C "correo-trabajo@empresa.com" -f ~/.ssh/id_ed25519_trabajo
+```
+
+Presiona Enter para aceptar las ubicaciones predeterminadas, y si deseas más seguridad, puedes ponerle una passphrase 🔑.
+
+---
+
+### 🧷 2: Agregar las llaves SSH al agente
+
+```bash
+eval "$(ssh-agent -s)"
+
+# Agrega las dos llaves
+ssh-add ~/.ssh/id_ed25519_personal
+ssh-add ~/.ssh/id_ed25519_trabajo
+```
+
+---
+
+### 📬 3: Agregar las llaves a GitHub
+
+1. Copia la llave pública:
+
+```bash
+cat ~/.ssh/id_ed25519_personal.pub
+cat ~/.ssh/id_ed25519_trabajo.pub
+```
+
+2. Ve a GitHub ➝ *Settings* ➝ *SSH and GPG keys* ➝ *New SSH key*.
+
+Agrega cada llave en la cuenta correspondiente.
+
+---
+
+### 🛠️ 4: Configurar el archivo `~/.ssh/config`
+
+Este archivo permite que Git sepa qué llave usar según el repositorio.
+
+```bash
+# ~/.ssh/config
+
+# Cuenta personal
+Host github-personal
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_personal
+
+# Cuenta de trabajo
+Host github-trabajo
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_trabajo
+```
+
+---
+
+### 🗂️ 5: Clonar repositorios usando los alias
+
+* Para la cuenta **personal**:
+
+```bash
+git clone git@github-personal:usuario/repositorio.git
+```
+
+* Para la cuenta **de trabajo**:
+
+```bash
+git clone git@github-trabajo:empresa/repositorio.git
+```
+
+---
+
+### 🧾 6: Configurar Git por proyecto (opcional pero útil)
+
+Dentro de cada repo puedes especificar el usuario:
+
+```bash
+git config user.name "Tu Nombre"
+git config user.email "tu-correo-personal@example.com"
+```
+
+O para trabajo:
+
+```bash
+git config user.name "Tu Nombre de Trabajo"
+git config user.email "tu-correo-trabajo@empresa.com"
+```
+
+---
+
+### 🧠 Metáfora fácil:
+🗝️ Llave SSH = Tu identificación secreta.
+
+🧳 Llave pública = Lo que le das a GitHub para que sepa que eres tú.
+
+🧍‍♂️ SSH Agent = El asistente que lleva tu llave secreta y la presenta cuando GitHub te la pide.
+
