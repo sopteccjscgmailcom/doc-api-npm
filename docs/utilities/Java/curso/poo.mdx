@@ -1,0 +1,212 @@
+# 🚀 Programación Orientada a Objetos (POO) 🎯  
+
+La **Programación Orientada a Objetos (POO)** es un paradigma que organiza el código en **objetos**, los cuales combinan **datos (atributos) 🏷️** y **comportamientos (métodos) 🔄**.  
+
+---
+
+## **🔹 1. Conceptos Clave de POO en Java 🏗️**  
+
+| Concepto | Descripción |
+|----------|------------|
+| **Clase 📦** | Plantilla para crear objetos (define atributos y métodos). |
+| **Objeto 🎭** | Instancia de una clase (copia que usa valores específicos). |
+| **Encapsulamiento 🔐** | Ocultar detalles internos y exponer solo lo necesario. |
+| **Herencia 👨‍👩‍👦** | Permite que una clase herede atributos y métodos de otra. |
+| **Polimorfismo 🦸‍♂️** | Un mismo método puede tener diferentes comportamientos. |
+
+---
+
+## **🔹 2. Creación de Clases y Objetos 🎭**  
+
+📌 **Ejemplo:** Clase `Coche` con atributos y métodos.  
+
+```java
+// Definimos la clase 📦
+class Coche {
+    String marca;
+    String modelo;
+    int velocidad;
+
+    // Método para mostrar información 🏎️
+    void mostrarInfo() {
+        System.out.println("🚗 Marca: " + marca + " | Modelo: " + modelo + " | Velocidad: " + velocidad + " km/h");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Crear un objeto de la clase Coche 🎭
+        Coche miCoche = new Coche();
+
+        // Asignar valores 🛠️
+        miCoche.marca = "Toyota";
+        miCoche.modelo = "Corolla";
+        miCoche.velocidad = 120;
+
+        // Usar el método 📢
+        miCoche.mostrarInfo();
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `Coche` es una **clase** 📦.  
+✅ `miCoche` es un **objeto** 🎭 basado en la clase `Coche`.  
+✅ `mostrarInfo()` es un **método** que imprime información del objeto.  
+
+---
+
+## **🔹 3. Encapsulamiento 🔐 (Controlar Acceso a Datos)**  
+
+📌 **Se usa `private` para proteger los datos y `getters/setters` para acceder a ellos.**  
+
+```java
+class Persona {
+    private String nombre; // Atributo privado 🔒
+
+    // Setter (Modifica el nombre) ✍️
+    void setNombre(String nuevoNombre) {
+        this.nombre = nuevoNombre;
+    }
+
+    // Getter (Obtiene el nombre) 📤
+    String getNombre() {
+        return nombre;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Persona p = new Persona();
+        p.setNombre("Juan"); // Modificamos el nombre usando el setter
+        System.out.println("👤 Nombre: " + p.getNombre()); // Mostramos el nombre con el getter
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `private` 🔒 impide acceso directo a `nombre`.  
+✅ `setNombre()` ✍️ permite modificarlo.  
+✅ `getNombre()` 📤 permite leerlo.  
+
+---
+
+## **🔹 4. Constructores 🔄 (Inicializar Objetos de Forma Automática)**  
+
+📌 **El constructor se ejecuta automáticamente al crear un objeto.**  
+
+```java
+class Animal {
+    String nombre;
+
+    // Constructor 🏗️
+    Animal(String nombre) {
+        this.nombre = nombre;
+    }
+
+    void hacerSonido() {
+        System.out.println("🐾 " + nombre + " hace un sonido.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal perro = new Animal("Max"); // Automáticamente le asigna un nombre 🐶
+        perro.hacerSonido();
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `Animal(String nombre)` se ejecuta cuando creamos un objeto.  
+✅ `this.nombre = nombre` asigna el valor pasado al constructor.  
+
+---
+
+## **🔹 5. Herencia 👨‍👩‍👦 (Reutilizar Código)**  
+
+📌 **Una subclase hereda atributos y métodos de una superclase.**  
+
+```java
+// Clase Padre 🏗️
+class Vehiculo {
+    String marca = "Desconocida";
+
+    void acelerar() {
+        System.out.println("🚀 Acelerando...");
+    }
+}
+
+// Clase Hija 🏎️ (hereda de Vehiculo)
+class Coche extends Vehiculo {
+    String modelo;
+
+    void mostrarInfo() {
+        System.out.println("🚗 Marca: " + marca + " | Modelo: " + modelo);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Coche miCoche = new Coche();
+        miCoche.marca = "Toyota";
+        miCoche.modelo = "Corolla";
+
+        miCoche.mostrarInfo(); // 🚗 Muestra la marca y modelo
+        miCoche.acelerar(); // 🚀 Usa el método heredado de Vehiculo
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `class Coche extends Vehiculo` → `Coche` hereda de `Vehiculo`.  
+✅ Puede usar **atributos y métodos de la clase padre**.  
+
+---
+
+## **🔹 6. Polimorfismo 🦸‍♂️ (Diferentes Comportamientos con el Mismo Método)**  
+
+📌 **Un método puede comportarse diferente en cada clase.**  
+
+```java
+class Animal {
+    void hacerSonido() {
+        System.out.println("🐾 Algún animal hace un sonido...");
+    }
+}
+
+// Sobreescribimos el método en clases hijas 🦴
+class Perro extends Animal {
+    void hacerSonido() {
+        System.out.println("🐶 ¡Guau guau!");
+    }
+}
+
+class Gato extends Animal {
+    void hacerSonido() {
+        System.out.println("🐱 ¡Miau miau!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal miAnimal; 
+
+        miAnimal = new Perro();
+        miAnimal.hacerSonido(); // 🐶 ¡Guau guau!
+
+        miAnimal = new Gato();
+        miAnimal.hacerSonido(); // 🐱 ¡Miau miau!
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `Perro` y `Gato` tienen su propia versión de `hacerSonido()`.  
+✅ **El mismo método se comporta diferente según la clase.**  
+
+---
+
+### 🚀 **¿Qué sigue?**  
+✅ ¿Quieres practicar con ejercicios de POO? 💡  
+✅ ¿Avanzamos a algo más, como **manejo de bases de datos con Java**? 🗄️

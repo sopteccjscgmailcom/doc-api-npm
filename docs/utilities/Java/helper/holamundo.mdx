@@ -1,0 +1,240 @@
+# 🚀CURSO JAVA  
+
+Vamos a aprender **Java paso a paso**. Comenzaremos con lo básico y avanzaremos progresivamente hacia temas más complejos.  
+
+---
+
+## 1. ¿Qué es Java?  
+Java es un **lenguaje de programación**:  
+✅ **Orientado a Objetos (POO)** 🏗  
+✅ **Multiplataforma** (corre en Windows, Mac, Linux) 🖥  
+✅ **Seguro y robusto** 🔒  
+✅ **Ampliamente usado en aplicaciones web, móviles, empresariales y más** 🌍  
+
+---
+
+## **🔹 2. Instalación de Java**  
+Para programar en Java, necesitas:  
+
+1️⃣ **Instalar el JDK (Java Development Kit)** → Descárgalo [aquí](https://www.oracle.com/java/technologies/javase-downloads.html).  
+2️⃣ **Elegir un editor o IDE** → Puedes usar **VS Code, IntelliJ IDEA, Eclipse o NetBeans**.  
+
+---
+
+## **🔹 3. Primer Programa en Java ("Hola Mundo")**  
+Vamos a escribir y ejecutar nuestro primer programa en Java.  
+
+📌 **Código:**  
+
+```java
+package holamundo;
+public class HolaMundo {
+    public static void main(String[] args) {
+        System.out.println("¡Hola, mundo!");
+    }
+}
+```
+
+📌 **Explicación:**  
+🔹 `public class HolaMundo` → Declara una **clase** llamada `HolaMundo`.  
+🔹 `public static void main(String[] args)` → **Punto de entrada** del programa.  
+🔹 `System.out.println("¡Hola, mundo!");` → Imprime texto en la consola.  
+
+✅ **Ejecutar el programa:**  
+1️⃣ Guarda el archivo como `HolaMundo.java`.  
+2️⃣ Compila con: `javac HolaMundo.java`.  
+3️⃣ Ejecuta con: `java HolaMundo`.  
+
+---
+
+## **🔹 4. Variables y Tipos de Datos en Java**  
+📌 Java tiene varios tipos de datos:  
+
+| Tipo | Descripción | Ejemplo |
+|------|------------|---------|
+| `int` | Números enteros | `int edad = 25;` |
+| `double` | Números decimales | `double precio = 10.99;` |
+| `char` | Un solo carácter | `char letra = 'A';` |
+| `boolean` | Verdadero/Falso | `boolean activo = true;` |
+| `String` | Texto (cadena) | `String nombre = "Juan";` |
+
+📌 **Ejemplo con variables:**  
+
+```java
+public class Variables {
+    public static void main(String[] args) {
+        int edad = 25;
+        double altura = 1.75;
+        boolean esProgramador = true;
+        String nombre = "Juan";
+
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Edad: " + edad);
+        System.out.println("Altura: " + altura);
+        System.out.println("¿Es programador? " + esProgramador);
+    }
+}
+```
+
+---
+
+## **🔹 5. Operadores en Java**  
+📌 Java tiene operadores matemáticos y lógicos:  
+
+| Operador | Descripción | Ejemplo |
+|----------|------------|---------|
+| `+` | Suma | `a + b` |
+| `-` | Resta | `a - b` |
+| `*` | Multiplicación | `a * b` |
+| `/` | División | `a / b` |
+| `%` | Módulo (residuo) | `a % b` |
+| `==` | Igualdad | `a == b` |
+| `!=` | Diferente | `a != b` |
+| `&&` | AND lógico | `a > 10 && b < 5` |
+| `||` | OR lógico | `a > 10 || b < 5` |
+
+📌 **Ejemplo:**  
+```java
+int a = 10;
+int b = 5;
+System.out.println("Suma: " + (a + b)); // 15
+System.out.println("¿A es mayor que B? " + (a > b)); // true
+```
+
+---
+
+## **🔹 6. Estructuras de Control**  
+📌 **Condicionales (`if`, `else`)**  
+```java
+int edad = 20;
+if (edad >= 18) {
+    System.out.println("Eres mayor de edad");
+} else {
+    System.out.println("Eres menor de edad");
+}
+```
+
+📌 **Bucles (`for`, `while`)**  
+🔹 **`for` (repetición controlada)**  
+```java
+for (int i = 0; i < 5; i++) {
+    System.out.println("Número: " + i);
+}
+```
+
+🔹 **`while` (se repite mientras la condición sea verdadera)**  
+```java
+int i = 0;
+while (i < 5) {
+    System.out.println("Número: " + i);
+    i++;
+}
+```
+
+---
+
+## **🔹 7. Funciones en Java**  
+📌 **Ejemplo de función con parámetros y retorno:**  
+
+```java
+public class Calculadora {
+    public static int sumar(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        int resultado = sumar(5, 3);
+        System.out.println("Suma: " + resultado); // 8
+    }
+}
+```
+
+---
+
+## **🔹 8. Programación Orientada a Objetos (POO)**  
+📌 Java usa la **POO** con **clases y objetos**.  
+
+🔹 **Ejemplo de una clase en Java:**  
+
+```java
+class Persona {
+    String nombre;
+    int edad;
+
+    // Constructor
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    // Método para mostrar información
+    public void mostrarInfo() {
+        System.out.println("Nombre: " + nombre + ", Edad: " + edad);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Persona p1 = new Persona("Juan", 30);
+        p1.mostrarInfo();
+    }
+}
+```
+
+📌 **Conceptos de POO en Java:**  
+✅ **Clases** → Plantilla de objetos.  
+✅ **Objetos** → Instancias de una clase.  
+✅ **Encapsulamiento** → Control del acceso a los datos.  
+✅ **Herencia** → Reutilización de código entre clases.  
+✅ **Polimorfismo** → Métodos con comportamiento diferente según la clase.  
+
+---
+
+## **📌 ¿Cómo quieres seguir?**  
+1️⃣ **Profundizar en POO (Herencia, Interfaces, Polimorfismo, etc.)**  
+2️⃣ **Colecciones en Java (List, Set, Map, etc.)**  
+3️⃣ **Manejo de archivos y excepciones**  
+4️⃣ **Bases de datos con JDBC**  
+5️⃣ **Spring Boot para desarrollo web**  
+
+Dime qué te interesa más o si quieres seguir paso a paso. 🚀
+
+¡Perfecto! Continuemos con el siguiente paso.  
+
+---
+
+## **🔹 9. Entrada y Salida de Datos en Java**  
+Hasta ahora, hemos usado `System.out.println()` para mostrar información en la consola. Ahora veremos cómo recibir datos del usuario.  
+
+### **📌 Entrada de datos con `Scanner`**  
+La clase `Scanner` nos permite leer datos ingresados por el usuario desde la consola.  
+
+🔹 **Ejemplo:** Leer un número y un texto desde la consola.  
+
+```java
+import java.util.Scanner; // Importamos Scanner
+
+public class EntradaDatos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Crear objeto Scanner
+
+        System.out.print("Ingresa tu nombre: ");
+        String nombre = scanner.nextLine(); // Leer texto
+
+        System.out.print("Ingresa tu edad: ");
+        int edad = scanner.nextInt(); // Leer número entero
+
+        System.out.println("Hola " + nombre + ", tienes " + edad + " años.");
+
+        scanner.close(); // Cerrar el Scanner (buena práctica)
+    }
+}
+```
+
+📌 **Explicación:**  
+🔹 `Scanner scanner = new Scanner(System.in);` → Crea un objeto para leer datos.  
+🔹 `nextLine()` → Lee una línea de texto.  
+🔹 `nextInt()` → Lee un número entero.  
+🔹 `scanner.close();` → Cierra el scanner para liberar recursos.  
+
+---

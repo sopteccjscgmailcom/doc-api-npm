@@ -1,0 +1,79 @@
+---
+sidebar_position: 1
+---
+# ☕ Maven 🆚 Ant 
+
+Tanto **Maven** como **Ant** son herramientas de construcción (*build tools*) para proyectos Java, pero tienen diferencias clave en su enfoque y uso.  
+
+---
+
+## **📌 Apache Ant 🐜 (Antes, Ahora y Todavía útil)**  
+**Ant** es una herramienta de construcción más antigua y flexible, pero requiere más configuración manual.  
+
+🔹 **Características principales:**  
+✅ Basado en XML 📜  
+✅ Permite tareas personalizadas (compilación, empaquetado, ejecución)  
+✅ No tiene gestión de dependencias integrada  
+✅ Requiere definir cada paso del proceso de compilación  
+
+🔹 **Ejemplo de un `build.xml` en Ant:**  
+```xml
+<project name="MiProyecto" default="compilar">
+    <target name="compilar">
+        <javac srcdir="src" destdir="bin" />
+    </target>
+</project>
+```
+📌 **Problema:** Hay que definir manualmente todos los pasos (compilar, empaquetar, ejecutar).  
+
+---
+
+## **📌 Apache Maven 🚀 (Automatización y Gestión de Dependencias)**  
+**Maven** simplifica el proceso al definir una estructura estándar y gestionar automáticamente las dependencias.  
+
+🔹 **Características principales:**  
+✅ Basado en XML 📜 (`pom.xml`)  
+✅ Usa convenciones en lugar de configuraciones personalizadas  
+✅ Gestión automática de dependencias 📦  
+✅ Compatible con proyectos modulares y grandes  
+
+🔹 **Ejemplo de un `pom.xml` en Maven:**  
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" ...>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.miempresa</groupId>
+    <artifactId>miproyecto</artifactId>
+    <version>1.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.3.9</version>
+        </dependency>
+    </dependencies>
+</project>
+```
+📌 **Ventaja:** Maven descarga y gestiona automáticamente las librerías necesarias.  
+
+---
+
+## **📊 Diferencias Claves entre Maven y Ant**  
+
+| Característica | **Maven** 🚀 | **Ant** 🐜 |
+|--------------|------------|-----------|
+| **Enfoque** | Basado en convenciones | Basado en configuraciones manuales |
+| **Gestión de dependencias** | Automática con `pom.xml` | No tiene, hay que manejar manualmente los `.jar` |
+| **Lenguaje de configuración** | XML (`pom.xml`) | XML (`build.xml`) |
+| **Estructura del proyecto** | Estándar (src/main/java, src/test/java) | Definida por el usuario |
+| **Facilidad de uso** | Más fácil para proyectos grandes | Más flexible pero más manual |
+| **Plugins y Extensiones** | Gran cantidad de plugins listos para usar | Menos plugins, más configuración manual |
+
+---
+
+## **📌 ¿Cuál elegir? 🤔**  
+✔ **Usa Maven** si quieres **automatizar** la construcción del proyecto y gestionar dependencias fácilmente.  
+✔ **Usa Ant** si necesitas **más flexibilidad** y personalización en el proceso de construcción.  
+
+🎯 **Conclusión:** Hoy en día, **Maven** es más popular y recomendado para la mayoría de proyectos Java, pero **Ant** sigue siendo útil en algunos casos específicos.  
+
+Si necesitas ayuda con un proyecto en Maven o Ant, dime. 😊

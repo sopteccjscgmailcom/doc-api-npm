@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.utilSidebar.category.Visual Studio Code": {
+    "message": "Visual Studio Code",
+    "description": "The label for category Visual Studio Code in sidebar utilSidebar"
+  },
+  "sidebar.utilSidebar.category.Visual Studio Code.link.generated-index.description": {
+    "message": "Tips para Visual Studio Code",
+    "description": "The generated-index page description for category Visual Studio Code in sidebar utilSidebar"
+  },
+  "sidebar.utilSidebar.category.Documentación Git": {
+    "message": "Documentación Git",
+    "description": "The label for category Documentación Git in sidebar utilSidebar"
+  },
+  "sidebar.utilSidebar.category.Documentación Git.link.generated-index.description": {
+    "message": "Curso de Git y Github",
+    "description": "The generated-index page description for category Documentación Git in sidebar utilSidebar"
+  },
+  "sidebar.utilSidebar.category.Docker": {
+    "message": "Docker",
+    "description": "The label for category Docker in sidebar utilSidebar"
+  },
+  "sidebar.utilSidebar.category.React": {
+    "message": "React",
+    "description": "The label for category React in sidebar utilSidebar"
+  }
+}

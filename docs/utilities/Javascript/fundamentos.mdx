@@ -1,0 +1,336 @@
+# JavaScript
+## 🧩 **Introducción**
+
+### 📌 ¿Qué es JavaScript?
+
+JavaScript es un lenguaje de programación que se usa principalmente para darle **interactividad** a las páginas web 🌐. Se ejecuta en el navegador.
+
+### 📄 Primer script
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi primer JS</title>
+</head>
+<body>
+  <h1>Hola Mundo</h1>
+  <script>
+    alert("¡Hola desde JavaScript!");
+  </script>
+</body>
+</html>
+```
+
+---
+
+## 🧮 **Variables y Tipos de Datos**
+
+### ✍️ Declarar variables
+
+```js
+let nombre = "Juan";     // variable que puede cambiar
+const edad = 30;         // constante que no cambia
+var ciudad = "Lima";     // forma antigua (no recomendada)
+```
+
+### 📚 Tipos de datos
+
+* String (texto): `"Hola"`
+* Number (número): `42`
+* Boolean (booleano): `true` o `false`
+* Null: `null`
+* Undefined: `undefined`
+* Object y Array (más adelante)
+
+---
+
+## 🔁 **Operadores y Condicionales**
+
+### ➕ Operadores básicos
+
+```js
+let x = 10 + 5;  // Suma
+let y = 10 - 2;  // Resta
+let z = 4 * 3;   // Multiplicación
+let w = 8 / 2;   // División
+```
+
+### 🤔 Condicionales
+
+```js
+let edad = 18;
+if (edad >= 18) {
+  console.log("Eres mayor de edad");
+} else {
+  console.log("Eres menor de edad");
+}
+```
+
+---
+
+## 🔁 **Ciclos**
+
+### 🔄 For
+
+```js
+for (let i = 0; i < 5; i++) {
+  console.log("Repetición número " + i);
+}
+```
+
+### 🔁 While
+
+```js
+let i = 0;
+while (i < 5) {
+  console.log("Valor de i: " + i);
+  i++;
+}
+```
+
+---
+
+## 🧠 **Funciones**
+
+### ✅ Declarar función
+
+```js
+function saludar(nombre) {
+  console.log("Hola, " + nombre + " 👋");
+}
+saludar("Carlos");
+```
+
+---
+
+## 📦 **Arrays y Objetos**
+
+### 📋 Array
+
+```js
+let frutas = ["🍎", "🍌", "🍇"];
+console.log(frutas[1]); // 🍌
+```
+
+### 🧱 Objeto
+
+```js
+let persona = {
+  nombre: "Ana",
+  edad: 25,
+  saludar: function() {
+    console.log("Hola, soy " + this.nombre);
+  }
+};
+persona.saludar(); // Hola, soy Ana
+```
+
+---
+
+## 🎮 **Eventos y DOM (interacción con HTML)**
+
+### 📍 Cambiar texto con botón
+
+```html
+<button onclick="cambiarTexto()">Haz clic</button>
+<p id="demo">Texto original</p>
+
+<script>
+function cambiarTexto() {
+  document.getElementById("demo").innerText = "Texto cambiado 🪄";
+}
+</script>
+```
+
+---
+
+## 🎯 Proyecto final sugerido
+
+Un **contador de clics** con botón y número que aumenta.
+
+¿Te gustaría que te dé el proyecto paso a paso como práctica guiada? También puedo darte ejercicios con soluciones 💡
+
+¿Te interesa continuar en ese rumbo o prefieres algo como juegos, React o uso de APIs? 🤔
+¡Perfecto! 😎 Ya que dominas lo básico de JavaScript, pasemos al **curso intermedio**. Aquí trabajarás con conceptos más avanzados como funciones de orden superior, promesas, asincronía, manipulación del DOM, y más.
+
+---
+
+## 📘 Curso Intermedio de JavaScript
+
+---
+
+## 🧠 Módulo 1: Funciones Avanzadas
+
+### 🔁 Funciones de orden superior
+
+Son funciones que **reciben o retornan otras funciones**.
+
+```js
+function saludar(nombre) {
+  return "Hola " + nombre;
+}
+
+function procesarEntradaUsuario(callback) {
+  let nombre = "Luis";
+  console.log(callback(nombre));
+}
+
+procesarEntradaUsuario(saludar); // Hola Luis
+```
+
+### 🔄 Métodos para arrays: `.map()`, `.filter()`, `.reduce()`
+
+```js
+let numeros = [1, 2, 3, 4];
+
+// map
+let dobles = numeros.map(num => num * 2); // [2, 4, 6, 8]
+
+// filter
+let pares = numeros.filter(num => num % 2 === 0); // [2, 4]
+
+// reduce
+let suma = numeros.reduce((acc, num) => acc + num, 0); // 10
+```
+
+---
+
+## 🧱 Módulo 2: Destructuración y Spread
+
+### 📦 Destructuring
+
+```js
+let persona = { nombre: "Ana", edad: 30 };
+let { nombre, edad } = persona;
+
+console.log(nombre); // Ana
+```
+
+### 🌪️ Spread y Rest
+
+```js
+let frutas1 = ["🍎", "🍌"];
+let frutas2 = ["🍇", ...frutas1]; // ["🍇", "🍎", "🍌"]
+
+function sumar(...numeros) {
+  return numeros.reduce((a, b) => a + b);
+}
+```
+
+---
+
+## ⏳ Módulo 3: Asincronía
+
+### 🕒 Callbacks
+
+```js
+function cargarDatos(callback) {
+  setTimeout(() => {
+    console.log("Datos cargados");
+    callback();
+  }, 2000);
+}
+
+cargarDatos(() => console.log("Después de cargar"));
+```
+
+### 🌐 Promesas
+
+```js
+let promesa = new Promise((resolve, reject) => {
+  let exito = true;
+  if (exito) resolve("Todo OK");
+  else reject("Algo falló");
+});
+
+promesa.then(res => console.log(res)).catch(err => console.log(err));
+```
+
+### ⚡ Async/Await
+
+```js
+async function obtenerDatos() {
+  try {
+    let respuesta = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    let datos = await respuesta.json();
+    console.log(datos);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+```
+
+---
+
+## 🧪 Módulo 4: Manipulación avanzada del DOM
+
+### 🎨 Crear elementos dinámicamente
+
+```js
+let nuevoElemento = document.createElement("div");
+nuevoElemento.innerText = "Hola desde JS";
+document.body.appendChild(nuevoElemento);
+```
+
+### 🎣 Eventos avanzados
+
+```js
+document.getElementById("miBoton").addEventListener("click", function() {
+  alert("Hiciste clic 🎯");
+});
+```
+
+---
+
+## 📦 Módulo 5: Módulos y Exportaciones
+
+### ➕ Exportar e importar
+
+```js
+// archivo: saludos.js
+export function saludar(nombre) {
+  return `Hola, ${nombre}`;
+}
+
+// archivo: app.js
+import { saludar } from './saludos.js';
+console.log(saludar("Luis"));
+```
+
+---
+
+## 🧰 Módulo 6: Local Storage y JSON
+
+### 💾 Guardar datos localmente
+
+```js
+localStorage.setItem("usuario", JSON.stringify({ nombre: "Carlos", edad: 25 }));
+let datos = JSON.parse(localStorage.getItem("usuario"));
+console.log(datos.nombre);
+```
+
+---
+
+## 🚀 Proyecto Sugerido
+
+### ✅ Lista de tareas (To-do list)
+
+* Agregar tareas con un input
+* Marcar tareas como hechas
+* Guardar en `localStorage`
+
+¿Te gustaría que te lo dé paso a paso como mini-proyecto guiado? 🧩
+
+---
+
+### Siguiente nivel ➡️
+
+Después de esto, puedes aprender:
+
+* React (biblioteca de interfaces)
+* TypeScript (JS tipado)
+* Testing con Jest
+* Web APIs y peticiones reales
+
+¿Quieres seguir con un **proyecto intermedio**, o pasar a **JavaScript avanzado** o **React**? 💡

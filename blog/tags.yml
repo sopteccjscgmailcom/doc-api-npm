@@ -17,3 +17,9 @@ hola:
   label: Hola
   permalink: /hola
   description: Hola tag description
+
+
+trabajo:
+  label: Trabajo
+  permalink: /trabajo
+  description: Experiencia laboral

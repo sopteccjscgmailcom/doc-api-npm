@@ -1,0 +1,51 @@
+# 📓 TEMARIO:
+- Principios SOLID
+- Patrones de desarrollo de software 
+- Antipatrones de desarrollo de software
+- Arquitectura de Microservicios
+- Azure
+- Azure DataBricks
+- Azure Datafactory
+- CI/CD con Jenkins
+- CI/CD con GitHub Actions
+- Clean Code
+- Contract First
+- Swagger
+- Docker 
+- Kubernetes
+- Dynatrace
+- Event Drive Architecture
+- Apache Kafka
+- RabbitMQ
+- Fortify
+- Git 
+- GitFlow
+- Que nuevas caracteristicas hay en Java 8, 11, 17, 21?
+- Jmeter
+- Jfrog
+- Kibana
+- OpenApi
+- Programación Funcional con Java
+- Programacion Reactiva con Java y RxJava
+- Programacion Reactiva con Java y WebFlux
+- Pruebas Unitarias y Pruebas Reactivas
+- Que es la reactividad?
+- SonarQube
+- BDD
+- Gherkin
+- Spring
+- Spring Boot
+- JPA
+- JDBC
+- Retrofit
+- MongoDB
+- Concurrencia en la BD
+- BD para cache (Redis)
+- Keyvault
+- HashicorpVault
+- ConfigServer
+- ConfigMaps
+- Spring Auditor
+- Grafana
+- Prometheus
+- Quarkus

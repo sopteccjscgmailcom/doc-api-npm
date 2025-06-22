@@ -1,0 +1,79 @@
+---
+sidebar_position: 10
+---
+# 🔤 Variables y Tipos de Datos
+
+## 🔹 **Variables en Java**  
+Una variable es un **espacio en memoria** donde se almacena un valor. En Java, antes de usar una variable, debes **declararla** con su tipo de dato.  
+
+📌 **Ejemplo de declaración y asignación:**  
+```java
+int edad = 25;  // Variable de tipo entero
+```
+Aquí **edad** es la variable y **25** es el valor asignado.  
+
+---
+
+## 🔹 **Tipos de Datos en Java**  
+En Java, hay **dos grandes categorías** de tipos de datos:  
+
+### 1️⃣ **Tipos primitivos (primitivos y ligeros)**  
+Son los más básicos y eficientes en memoria.  
+
+| Tipo     | Tamaño  |Valor por defecto| Ejemplo |
+|----------|---------|-----------------|---------|
+| `byte`   | 1 byte  | 0               | `byte b = 10;` |
+| `short`  | 2 bytes | 0               | `short s = 200;` |
+| `int`    | 4 bytes | 0               | `int num = 500;` |
+| `long`   | 8 bytes | 0L              | `long bigNum = 100000L;` |
+| `float`  | 4 bytes | 0.0f            | `float pi = 3.14f;` |
+| `double` | 8 bytes | 0.0             | `double e = 2.718;` |
+| `char`   | 2 bytes | '\u0000'        | `char letra = 'A';` |
+| `boolean`| 1 bit   | false           | `boolean isActive = true;` |
+
+### 2️⃣ **Tipos de Referencia (objetos y más complejos)**  
+Se usan para **almacenar objetos**, como cadenas de texto (`String`), arreglos (`int[]`), listas, etc.  
+
+📌 **Ejemplo con String:**  
+```java
+String mensaje = "¡Hola, Java!"; // Variable de tipo referencia
+```
+Aquí **mensaje** almacena una dirección de memoria que apunta a la cadena `"¡Hola, Java!"`.  
+
+---
+
+## 🚀 **Ejemplo Completo**  
+```java
+public class VariablesEjemplo {
+    public static void main(String[] args) {
+        int edad = 25;
+        double altura = 1.75;
+        char inicial = 'J';
+        boolean esEstudiante = true;
+        String nombre = "Juan";
+        
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Edad: " + edad);
+        System.out.println("Altura: " + altura + "m");
+        System.out.println("Inicial: " + inicial);
+        System.out.println("¿Es estudiante? " + esEstudiante);
+    }
+}
+```
+🔹 **Salida:**  
+```
+Nombre: Juan  
+Edad: 25  
+Altura: 1.75m  
+Inicial: J  
+¿Es estudiante? true  
+```
+
+---
+
+## 🎯 **Resumen Rápido**  
+✅ **Primitivos** → Datos básicos (números, booleanos, caracteres).  
+✅ **Referencia** → Apuntan a objetos (cadenas, listas, etc.).  
+✅ **Siempre debes declarar el tipo antes de usar una variable**.  
+
+💡 ¡Dime si quieres más ejemplos o más profundidad en algo! 🚀

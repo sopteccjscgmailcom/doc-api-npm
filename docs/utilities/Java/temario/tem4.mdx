@@ -1,0 +1,102 @@
+# 🏗 Arquitectura de Microservicios  
+
+La **Arquitectura de Microservicios** es un enfoque de desarrollo de software donde una aplicación se construye como un **conjunto de servicios pequeños e independientes**, en lugar de un solo sistema monolítico. Cada microservicio se encarga de una funcionalidad específica y se comunica con los demás mediante **APIs**.  
+
+---
+
+## 🛠 **Características Claves de los Microservicios**  
+
+✔ **Independencia** → Cada microservicio puede desarrollarse, desplegarse y escalarse de forma independiente.  
+✔ **Comunicación vía APIs** → Normalmente usan **REST, gRPC o mensajería asíncrona (Kafka, RabbitMQ)**.  
+✔ **Cada servicio tiene su propia base de datos** → Esto evita dependencias fuertes entre ellos.  
+✔ **Escalabilidad** → Se pueden escalar solo los servicios que lo necesiten, en lugar de toda la aplicación.  
+✔ **Diversidad tecnológica** → Cada microservicio puede estar desarrollado en diferentes lenguajes o frameworks.  
+
+---
+
+## 🔄 **Diferencia entre Monolito y Microservicios**  
+
+| Característica | Monolito 🏢 | Microservicios 🏗 |
+|--------------|------------|----------------|
+| **Estructura** | Un solo código fuente grande | Muchos servicios pequeños |
+| **Escalabilidad** | Se escala todo junto | Se escalan solo los servicios necesarios |
+| **Despliegue** | Desplegado como un único sistema | Desplegados de manera independiente |
+| **Mantenimiento** | Difícil, ya que todo está acoplado | Más fácil de mantener y actualizar |
+| **Lenguaje** | Normalmente un solo lenguaje | Puede usar múltiples tecnologías |
+
+---
+
+## ⚙ **Ejemplo de Arquitectura de Microservicios**  
+
+Imagina un sistema de **e-commerce** dividido en microservicios:  
+
+- **🛍 Servicio de Productos** → Gestiona el catálogo de productos.  
+- **👥 Servicio de Usuarios** → Maneja cuentas y autenticación.  
+- **💰 Servicio de Pagos** → Procesa transacciones.  
+- **📦 Servicio de Envíos** → Gestiona pedidos y entregas.  
+
+📡 **Comunicación entre Microservicios**  
+Los microservicios se comunican mediante **APIs REST, gRPC o colas de mensajes (Kafka, RabbitMQ, etc.)**.  
+
+---
+
+## 📌 **Ejemplo en Java con Spring Boot**  
+
+### ✅ **Microservicio de Usuarios**  
+
+📍 **Estructura de un simple microservicio en Spring Boot:**  
+
+```java
+@RestController
+@RequestMapping("/usuarios")
+public class UsuarioController {
+
+    @GetMapping("/{id}")
+    public ResponseEntity<String> obtenerUsuario(@PathVariable Long id) {
+        return ResponseEntity.ok("Usuario con ID: " + id);
+    }
+}
+```
+
+📍 **Comunicación con otro microservicio (ejemplo con RestTemplate):**  
+
+```java
+@RestController
+@RequestMapping("/pedidos")
+public class PedidoController {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @GetMapping("/{usuarioId}")
+    public String obtenerPedidos(@PathVariable Long usuarioId) {
+        String usuario = restTemplate.getForObject("http://usuarios-service/usuarios/" + usuarioId, String.class);
+        return "Pedidos del " + usuario;
+    }
+}
+```
+
+---
+
+## 🚀 **Ventajas de Microservicios**  
+
+✔ **Mayor escalabilidad** → Se pueden escalar solo los servicios que lo necesiten.  
+✔ **Facilita el mantenimiento** → Un error en un servicio no afecta a toda la aplicación.  
+✔ **Flexibilidad tecnológica** → Se pueden usar distintos lenguajes y bases de datos.  
+✔ **Despliegue independiente** → Se pueden actualizar y desplegar servicios sin afectar a otros.  
+
+---
+
+## ⚠ **Desafíos de Microservicios**  
+
+❌ **Complejidad** → Más difícil de gestionar que un monolito.  
+❌ **Comunicación entre servicios** → Se requiere manejar fallos en la red.  
+❌ **Gestión de datos distribuida** → Cada servicio tiene su base de datos, lo que complica consultas globales.  
+❌ **Mayor esfuerzo de monitoreo** → Se necesitan herramientas como **Prometheus, Grafana, ELK** para seguimiento.  
+
+---
+
+## 🎯 **Conclusión**  
+La **arquitectura de microservicios** es ideal para **aplicaciones escalables y modulares**, pero requiere una buena gestión para evitar problemas de comunicación y monitoreo.  
+
+Si quieres más detalles sobre implementación con **Spring Boot**, dime. 😊🚀

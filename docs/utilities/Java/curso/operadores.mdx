@@ -1,0 +1,151 @@
+---
+sidebar_position: 20
+---
+# 🔢 Operadores
+
+Los **operadores** en Java son símbolos que permiten realizar operaciones en variables y valores. Se dividen en **varias categorías** según su función.  
+
+---
+
+## **1️⃣ Operadores Aritméticos** ➕➖✖️➗  
+Se usan para hacer cálculos matemáticos.  
+
+| Operador | Descripción | Ejemplo (`a = 10`, `b = 3`) | Resultado |
+|----------|------------|----------------|-----------|
+| `+`  | Suma | `a + b`  | `13` |
+| `-`  | Resta | `a - b`  | `7` |
+| `*`  | Multiplicación | `a * b` | `30` |
+| `/`  | División | `a / b` | `3` (solo parte entera si son enteros) |
+| `%`  | Módulo (residuo) | `a % b` | `1` |
+
+📌 **Ejemplo en código:**  
+```java
+int x = 10, y = 3;
+System.out.println("Suma: " + (x + y));  // 13
+System.out.println("División: " + (x / y));  // 3
+System.out.println("Módulo: " + (x % y));  // 1
+```
+
+---
+
+## **2️⃣ Operadores de Asignación** `=`  
+Sirven para asignar valores a variables.  
+
+| Operador | Descripción | Ejemplo (`a = 5`) | Equivalente a... |
+|----------|------------|----------------|----------------|
+| `=`  | Asignación simple | `a = 5` | `a = 5` |
+| `+=` | Suma y asigna | `a += 3` | `a = a + 3` |
+| `-=` | Resta y asigna | `a -= 2` | `a = a - 2` |
+| `*=` | Multiplica y asigna | `a *= 4` | `a = a * 4` |
+| `/=` | Divide y asigna | `a /= 2` | `a = a / 2` |
+| `%=` | Módulo y asigna | `a %= 3` | `a = a % 3` |
+
+📌 **Ejemplo:**  
+```java
+int a = 10;
+a += 5;  // Ahora a es 15
+a *= 2;  // Ahora a es 30
+```
+
+---
+
+## **3️⃣ Operadores Relacionales (Comparación) 🔄**  
+Se usan para comparar valores. Devuelven `true` o `false`.  
+
+| Operador | Descripción | Ejemplo (`a = 5`, `b = 8`) | Resultado |
+|----------|------------|----------------|-----------|
+| `==` | Igual a | `a == b` | `false` |
+| `!=` | Diferente de | `a != b` | `true` |
+| `>` | Mayor que | `a > b` | `false` |
+| `<` | Menor que | `a < b` | `true` |
+| `>=` | Mayor o igual | `a >= b` | `false` |
+| `<=` | Menor o igual | `a <= b` | `true` |
+
+📌 **Ejemplo:**  
+```java
+int edad = 18;
+System.out.println(edad >= 18);  // true
+System.out.println(edad < 18);   // false
+```
+
+---
+
+## **4️⃣ Operadores Lógicos 🧠**  
+Se usan para combinar condiciones (`true` o `false`).  
+
+| Operador | Descripción | Ejemplo (`a = 5`, `b = 8`) | Resultado |
+|----------|------------|----------------|-----------|
+| `&&`   | **AND (y)** | `(a > 3 && b < 10)` | `true` |
+| `\|\|` | **OR (o)** | `(a < 3 \|\| b > 5)` | `true` |
+| `!`    | **NOT (negación)** | `!(a > b)` | `true` |
+
+📌 **Ejemplo:**  
+```java
+boolean esMayor = (10 > 5) && (5 < 8);  // true
+boolean esMenor = !(10 < 5);  // true
+```
+
+---
+
+## **5️⃣ Operadores de Incremento y Decremento** ⏫⏬  
+Sirven para aumentar o disminuir valores en **1**.  
+
+| Operador | Descripción | Ejemplo (`a = 5`) | Resultado |
+|----------|------------|----------------|-----------|
+| `++` | Incremento | `a++` | `6` |
+| `--` | Decremento | `a--` | `4` |
+
+📌 **Ejemplo:**  
+```java
+int num = 10;
+num++;  // Ahora num es 11
+num--;  // Ahora num es 10 otra vez
+```
+
+⚠️ **Diferencia entre `x++` y `++x`**  
+```java
+int x = 5;
+System.out.println(x++);  // 5 (primero usa el valor y luego incrementa)
+System.out.println(x);    // 6
+
+int y = 5;
+System.out.println(++y);  // 6 (primero incrementa y luego usa el valor)
+```
+
+---
+
+## **6️⃣ Operadores Bit a Bit** 🔧  
+Manipulan los bits de los números.  
+
+| Operador | Descripción | Ejemplo (`a = 5`, `b = 3`) |
+|----------|------------|----------------|
+| `&` | AND bit a bit | `a & b` (0101 & 0011 → 0001) |
+| `|` | OR bit a bit | `a | b` (0101 | 0011 → 0111) |
+| `^` | XOR bit a bit | `a ^ b` (0101 ^ 0011 → 0110) |
+| `~` | NOT bit a bit | `~a` (invierte bits) |
+| `<<` | Desplazamiento a la izquierda | `a << 1` (multiplica por 2) |
+| `>>` | Desplazamiento a la derecha | `a >> 1` (divide por 2) |
+
+📌 **Ejemplo:**  
+```java
+int a = 5, b = 3;
+System.out.println(a & b);  // 1
+System.out.println(a | b);  // 7
+System.out.println(a ^ b);  // 6
+System.out.println(a << 1); // 10 (5 * 2)
+System.out.println(a >> 1); // 2 (5 / 2)
+```
+
+---
+
+## 🎯 **Resumen Rápido**  
+✅ **Aritméticos** ➕➖✖️➗ `%` (sumar, restar, dividir, etc.).  
+✅ **Asignación** `=` `+=` `-=` `*=` `/=` (modifican valores).  
+✅ **Relacionales** `==` `!=` `>` `<` `>=` `<=` (comparan valores).  
+✅ **Lógicos** `&&` `||` `!` (combinan condiciones).  
+✅ **Incremento/Decremento** `++` `--` (suman/restan 1).  
+✅ **Bit a Bit** `&` `|` `^` `<<` `>>` `~` (operaciones a nivel de bits).  
+
+---
+
+💡 **¿Quieres ejemplos más avanzados o con aplicaciones reales?** 🚀

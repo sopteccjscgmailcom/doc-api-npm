@@ -1,0 +1,248 @@
+# 📂 Manejo de Archivos y Excepciones
+
+Java nos permite leer y escribir archivos, pero estos procesos pueden generar errores. Por eso, es importante manejar **excepciones** para evitar fallos inesperados.  
+
+---
+
+## **🔹Excepciones en Java**  
+📌 **Una excepción** es un error que ocurre en tiempo de ejecución y puede detener el programa si no se maneja.  
+
+### **📌 Manejo de Excepciones con `try-catch`**  
+🔹 **Ejemplo:** Evitar que un programa se cierre si ocurre un error.  
+
+```java
+public class ManejoExcepciones {
+    public static void main(String[] args) {
+        try {
+            int resultado = 10 / 0; // Error: División por cero
+            System.out.println("Resultado: " + resultado);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: No se puede dividir entre cero.");
+        }
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `try` → Bloque de código donde puede ocurrir un error.  
+✅ `catch` → Captura y maneja el error.  
+✅ `e.getMessage()` → Muestra el mensaje del error.  
+
+### **📌 `finally`: Código que siempre se ejecuta**  
+```java
+try {
+    int[] numeros = {1, 2, 3};
+    System.out.println(numeros[5]); // Error: Índice fuera de rango
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Error: Índice fuera del límite del array.");
+} finally {
+    System.out.println("Este mensaje siempre se ejecuta.");
+}
+```
+
+📌 **El bloque `finally` siempre se ejecuta**, haya o no error.  
+
+---
+
+## **📂Lectura y Escritura de Archivos**  
+📌 Para manipular archivos usamos la clase `File`.  
+
+### **📌 Crear y Escribir un Archivo**  
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class EscribirArchivo {
+    public static void main(String[] args) {
+        try {
+            FileWriter escritor = new FileWriter("archivo.txt");
+            escritor.write("Hola, esto es un archivo en Java.");
+            escritor.close();
+            System.out.println("Archivo creado y escrito con éxito.");
+        } catch (IOException e) {
+            System.out.println("Ocurrió un error al escribir el archivo.");
+        }
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `FileWriter` → Permite escribir en un archivo.  
+✅ `write(texto)` → Escribe en el archivo.  
+✅ `close()` → Cierra el archivo después de escribir.  
+
+---
+
+### **📌 Leer un Archivo**  
+```java
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class LeerArchivo {
+    public static void main(String[] args) {
+        try {
+            File archivo = new File("archivo.txt");
+            Scanner lector = new Scanner(archivo);
+
+            while (lector.hasNextLine()) {
+                String linea = lector.nextLine();
+                System.out.println(linea);
+            }
+
+            lector.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("No se encontró el archivo.");
+        }
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `File` → Representa un archivo en el sistema.  
+✅ `Scanner` → Permite leer el archivo línea por línea.  
+
+---
+
+### 🚀 **Profundizando en Manejo de Archivos en Java**  
+
+Java nos permite manipular archivos de varias formas: **lectura, escritura, modificación y eliminación**. Vamos a ver más detalles y técnicas avanzadas.  
+
+---
+
+## **🔹 1. Comprobar si un Archivo Existe**  
+📌 Antes de leer o escribir en un archivo, podemos verificar si existe para evitar errores.  
+
+```java
+import java.io.File;
+
+public class ComprobarArchivo {
+    public static void main(String[] args) {
+        File archivo = new File("archivo.txt");
+
+        if (archivo.exists()) {
+            System.out.println("El archivo existe.");
+        } else {
+            System.out.println("El archivo no existe.");
+        }
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `exists()` → Verifica si el archivo existe.  
+✅ `isFile()` → Comprueba si es un archivo (y no una carpeta).  
+
+---
+
+## **🔹 2. Agregar Texto a un Archivo sin Sobrescribirlo**  
+📌 `FileWriter` en modo "append" (`true`) permite añadir texto sin borrar el contenido existente.  
+
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class AgregarTexto {
+    public static void main(String[] args) {
+        try {
+            FileWriter escritor = new FileWriter("archivo.txt", true); // true = no sobrescribe
+            escritor.write("\nEste es un nuevo texto agregado.");
+            escritor.close();
+            System.out.println("Texto agregado correctamente.");
+        } catch (IOException e) {
+            System.out.println("Error al agregar texto.");
+        }
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `new FileWriter("archivo.txt", true)` → Permite agregar texto sin borrar el contenido anterior.  
+
+---
+
+## **🔹 3. Obtener Información del Archivo**  
+📌 Podemos obtener el nombre, ruta, tamaño y permisos de un archivo.  
+
+```java
+import java.io.File;
+
+public class InfoArchivo {
+    public static void main(String[] args) {
+        File archivo = new File("archivo.txt");
+
+        if (archivo.exists()) {
+            System.out.println("Nombre: " + archivo.getName());
+            System.out.println("Ruta absoluta: " + archivo.getAbsolutePath());
+            System.out.println("Tamaño: " + archivo.length() + " bytes");
+            System.out.println("¿Es legible?: " + archivo.canRead());
+            System.out.println("¿Es editable?: " + archivo.canWrite());
+        } else {
+            System.out.println("El archivo no existe.");
+        }
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `getName()` → Obtiene el nombre del archivo.  
+✅ `getAbsolutePath()` → Obtiene la ruta completa.  
+✅ `length()` → Devuelve el tamaño en bytes.  
+✅ `canRead()` y `canWrite()` → Verifica permisos.  
+
+---
+
+## **🔹 4. Eliminar un Archivo**  
+📌 `delete()` permite eliminar un archivo si existe.  
+
+```java
+import java.io.File;
+
+public class EliminarArchivo {
+    public static void main(String[] args) {
+        File archivo = new File("archivo.txt");
+
+        if (archivo.delete()) {
+            System.out.println("Archivo eliminado.");
+        } else {
+            System.out.println("No se pudo eliminar.");
+        }
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `delete()` → Borra el archivo si existe.  
+
+---
+
+## **🔹 5. Leer Archivos con `BufferedReader` (Eficiente para Archivos Grandes)**  
+📌 `BufferedReader` permite leer archivos línea por línea de manera más eficiente que `Scanner`.  
+
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class LeerConBuffer {
+    public static void main(String[] args) {
+        try (BufferedReader lector = new BufferedReader(new FileReader("archivo.txt"))) {
+            String linea;
+            while ((linea = lector.readLine()) != null) {
+                System.out.println(linea);
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo.");
+        }
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `BufferedReader` → Más rápido para archivos grandes.  
+✅ `readLine()` → Lee línea por línea hasta `null`.  
+✅ `try-with-resources` → Cierra el archivo automáticamente.  
+
+---
+
+📌 **¿Quieres más ejemplos o pasamos a programación orientada a objetos (POO)?** 😊

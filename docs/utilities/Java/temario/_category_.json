@@ -1,0 +1,8 @@
+{
+  "label": "Temario",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Temario de Java"
+  }
+}

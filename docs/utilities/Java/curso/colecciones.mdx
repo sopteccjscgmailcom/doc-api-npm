@@ -1,0 +1,112 @@
+# 🗄️ Colecciones(List, Set, Map)  
+
+Las **colecciones** en Java son estructuras de datos dinámicas que permiten almacenar y manipular elementos de manera más flexible que los arrays.  
+
+📌 **Tipos principales de colecciones en Java:**  
+✅ **`List`** → Almacena elementos en orden, permite duplicados.  
+✅ **`Set`** → No permite duplicados, no garantiza orden.  
+✅ **`Map`** → Almacena pares clave-valor.  
+
+---
+
+## **🔹`List` (ArrayList, LinkedList)**  
+📌 Una `List` permite elementos duplicados y acceso por índice.  
+
+🔹 **Ejemplo con `ArrayList`**  
+```java
+import java.util.ArrayList;
+
+public class ListaEjemplo {
+    public static void main(String[] args) {
+        ArrayList<String> nombres = new ArrayList<>();
+
+        // Agregar elementos
+        nombres.add("Juan");
+        nombres.add("Ana");
+        nombres.add("Luis");
+
+        // Acceder por índice
+        System.out.println("Primer nombre: " + nombres.get(0));
+
+        // Recorrer la lista
+        for (String nombre : nombres) {
+            System.out.println("Nombre: " + nombre);
+        }
+
+        // Eliminar un elemento
+        nombres.remove("Ana");
+
+        System.out.println("Lista después de eliminar: " + nombres);
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `add(elemento)` → Agrega un elemento.  
+✅ `get(índice)` → Obtiene un elemento.  
+✅ `remove(elemento)` → Elimina un elemento.  
+
+---
+
+## **🔹`Set` (HashSet, TreeSet)**  
+📌 `Set` es una colección que **no permite duplicados**.  
+
+🔹 **Ejemplo con `HashSet`**  
+```java
+import java.util.HashSet;
+
+public class SetEjemplo {
+    public static void main(String[] args) {
+        HashSet<String> frutas = new HashSet<>();
+
+        frutas.add("Manzana");
+        frutas.add("Plátano");
+        frutas.add("Manzana"); // Duplicado, no se agregará
+
+        for (String fruta : frutas) {
+            System.out.println("Fruta: " + fruta);
+        }
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `add(elemento)` → Agrega un elemento si no existe.  
+✅ **No tiene índices** → No se puede acceder con `get(i)`.  
+
+---
+
+## **🔹`Map` (HashMap, TreeMap)**  
+📌 `Map` almacena pares **clave-valor**.  
+
+🔹 **Ejemplo con `HashMap`**  
+```java
+import java.util.HashMap;
+
+public class MapEjemplo {
+    public static void main(String[] args) {
+        HashMap<Integer, String> estudiantes = new HashMap<>();
+
+        estudiantes.put(1, "Juan");
+        estudiantes.put(2, "Ana");
+        estudiantes.put(3, "Luis");
+
+        // Acceder por clave
+        System.out.println("Estudiante con ID 2: " + estudiantes.get(2));
+
+        // Recorrer el mapa
+        for (Integer clave : estudiantes.keySet()) {
+            System.out.println("ID: " + clave + ", Nombre: " + estudiantes.get(clave));
+        }
+    }
+}
+```
+
+📌 **Notas:**  
+✅ `put(clave, valor)` → Agrega un par clave-valor.  
+✅ `get(clave)` → Obtiene un valor.  
+✅ `keySet()` → Devuelve todas las claves.  
+
+---
+
+📌 **¿Quieres profundizar más en alguna colección o pasamos a manejo de archivos y excepciones?** 😊

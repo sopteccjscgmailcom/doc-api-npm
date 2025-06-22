@@ -1,0 +1,30 @@
+{
+  "title": {
+    "message": "Jim",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "log de jim",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Utilitarios": {
+    "message": "Utilitarios",
+    "description": "Navbar item with label Utilitarios"
+  },
+  "item.label.Codigos": {
+    "message": "Codigos",
+    "description": "Navbar item with label Codigos"
+  },
+  "item.label.Dicionario": {
+    "message": "Dicionario",
+    "description": "Navbar item with label Dicionario"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

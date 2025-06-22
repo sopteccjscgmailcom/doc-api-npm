@@ -1,0 +1,200 @@
+# 📌 Principios SOLID
+---
+
+Los principios **SOLID** son cinco reglas fundamentales para escribir código limpio, modular y mantenible en la **Programación Orientada a Objetos (POO)**. Fueron formulados por **Robert C. Martin** (*Uncle Bob*) y ayudan a reducir el acoplamiento y mejorar la reutilización del código.  
+
+---  
+
+## 🛠️ **S -  (SRP) (Principio de Responsabilidad Única)**  
+👉 **Single Responsibility Principle "Una clase debe tener una única razón para cambiar."**  
+
+Cada clase debe **tener una sola responsabilidad** dentro del sistema, evitando mezclar lógica de negocio con lógica de persistencia, interfaz de usuario, etc.  
+
+🔴 **Problema sin SRP:**  
+```java
+class Employee {
+    public void calculateSalary() { /* Lógica de cálculo de salario */ }
+    public void saveToDatabase() { /* Lógica para guardar en la BD */ }
+}
+```
+- ❌ La clase `Employee` está manejando **dos responsabilidades**: lógica de negocio (cálculo de salario) y persistencia (guardar en la base de datos).  
+ 
+✅ **Solución aplicando SRP:**  
+```java
+class Employee {
+    public void calculateSalary() { /* Lógica de salario */ }
+}
+
+class EmployeeRepository {
+    public void saveToDatabase(Employee employee) { /* Guardar en BD */ }
+}
+```
+- ✅ Ahora, `Employee` solo maneja la lógica de empleados y `EmployeeRepository` maneja la persistencia.  
+
+---  
+
+## 🔓 **O - Open/Closed Principle (OCP) (Principio de Abierto/Cerrado)**  
+👉 **"El código debe estar abierto para extensión, pero cerrado para modificación."**  
+
+Debemos diseñar las clases de forma que puedan **ser extendidas sin modificar su código original**.  
+
+🔴 **Problema sin OCP:**  
+```java
+class Shape {
+    public double calculateArea(String shapeType, double value) {
+        if (shapeType.equals("Circle")) {
+            return Math.PI * value * value;
+        } else if (shapeType.equals("Square")) {
+            return value * value;
+        }
+        return 0;
+    }
+}
+```
+- ❌ Cada vez que agregamos una nueva figura, debemos modificar la clase `Shape`.  
+
+✅ **Solución aplicando OCP:**  
+```java
+interface Shape {
+    double calculateArea();
+}
+
+class Circle implements Shape {
+    private double radius;
+    public Circle(double radius) { this.radius = radius; }
+    @Override public double calculateArea() { return Math.PI * radius * radius; }
+}
+
+class Square implements Shape {
+    private double side;
+    public Square(double side) { this.side = side; }
+    @Override public double calculateArea() { return side * side; }
+}
+```
+- ✅ Ahora podemos agregar nuevas formas sin modificar el código original.  
+
+---  
+
+## 🏛️ **L - Liskov Substitution Principle (LSP) (Principio de Sustitución de Liskov)**  
+👉 **"Las subclases deben poder ser usadas en lugar de sus clases base sin problemas."**  
+
+Si una subclase rompe el comportamiento esperado de la clase base, estamos violando LSP.  
+
+🔴 **Problema sin LSP:**  
+```java
+class Bird {
+    public void fly() { System.out.println("Flying..."); }
+}
+
+class Penguin extends Bird {
+    @Override
+    public void fly() {
+        throw new UnsupportedOperationException("Penguins can't fly");
+    }
+}
+```
+- ❌ Un `Penguin` es un `Bird`, pero **no puede volar**. Esto rompe el principio LSP.  
+
+✅ **Solución aplicando LSP:**  
+```java
+interface Bird { void eat(); }
+
+interface FlyingBird extends Bird { void fly(); }
+
+class Sparrow implements FlyingBird {
+    @Override public void eat() { System.out.println("Eating..."); }
+    @Override public void fly() { System.out.println("Flying..."); }
+}
+
+class Penguin implements Bird {
+    @Override public void eat() { System.out.println("Eating..."); }
+}
+```
+- ✅ Ahora `Penguin` **no tiene métodos que no necesita**, respetando LSP.  
+
+---  
+
+## 🛑 **I - Interface Segregation Principle (ISP) (Principio de Segregación de Interfaces)**  
+👉 **"No fuerces a una clase a implementar métodos que no usa."**  
+
+🔴 **Problema sin ISP:**  
+```java
+interface Animal {
+    void fly();
+    void swim();
+}
+
+class Dog implements Animal {
+    @Override
+    public void fly() { throw new UnsupportedOperationException("Dogs can't fly"); }
+    @Override
+    public void swim() { System.out.println("Swimming..."); }
+}
+```
+- ❌ `Dog` está obligado a implementar `fly()`, aunque no lo necesita.  
+
+✅ **Solución aplicando ISP:**  
+```java
+interface Swimmer { void swim(); }
+interface Flyer { void fly(); }
+
+class Dog implements Swimmer {
+    @Override public void swim() { System.out.println("Swimming..."); }
+}
+```
+- ✅ Ahora `Dog` **no tiene métodos innecesarios**.  
+
+---  
+
+## 🔄 **D - Dependency Inversion Principle (DIP) (Principio de Inversión de Dependencias)**  
+👉 **"Las clases deben depender de abstracciones, no de implementaciones concretas."**  
+
+🔴 **Problema sin DIP:**  
+```java
+class MySQLDatabase {
+    public void connect() { System.out.println("Connecting to MySQL..."); }
+}
+
+class Application {
+    private MySQLDatabase database = new MySQLDatabase();
+
+    public void start() { database.connect(); }
+}
+```
+- ❌ `Application` **depende directamente** de `MySQLDatabase`. Si queremos cambiar a PostgreSQL, debemos modificar la clase.  
+
+✅ **Solución aplicando DIP:**  
+```java
+interface Database { void connect(); }
+
+class MySQLDatabase implements Database {
+    @Override public void connect() { System.out.println("Connecting to MySQL..."); }
+}
+
+class PostgreSQLDatabase implements Database {
+    @Override public void connect() { System.out.println("Connecting to PostgreSQL..."); }
+}
+
+class Application {
+    private Database database;
+    public Application(Database database) { this.database = database; }
+    public void start() { database.connect(); }
+}
+```
+- ✅ Ahora `Application` **depende de la abstracción** (`Database`), y podemos usar cualquier base de datos sin modificar su código.  
+
+---
+
+## 🎯 **Resumen rápido de SOLID**  
+
+| Principio | Explicación | Beneficio |
+|-----------|------------|-----------|
+| **S** - Single Responsibility | Una clase debe tener una sola responsabilidad. | Código más modular y fácil de mantener. |
+| **O** - Open/Closed | El código debe ser extensible sin modificarlo. | Facilita la escalabilidad y evita errores. |
+| **L** - Liskov Substitution | Las subclases deben ser intercambiables con sus superclases. | Evita comportamientos inesperados. |
+| **I** - Interface Segregation | No forzar a clases a implementar métodos que no usan. | Interfaces más específicas y flexibles. |
+| **D** - Dependency Inversion | Depender de abstracciones, no de implementaciones concretas. | Facilita pruebas y cambios de tecnología. |
+
+---
+
+Ahora que ya tienes la teoría clara, ¿quieres que te pase ejercicios para practicar? 🚀
